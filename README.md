@@ -1,4 +1,4 @@
-# 🩺 ArogyaBridge — Decentralized Electronic Health Record (EHR) System
+# 🩺 MediSetu — Decentralized Electronic Health Record (EHR) System
 
 > **Built with MERN Stack + Blockchain + IPFS + AI Chatbot**  
 > Bridging the gap between secure medical data, transparency, and control for patients, doctors, and labs.
@@ -39,7 +39,7 @@
 
 ## 🚀 Project Overview
 
-**ArogyaBridge** is a blockchain-powered platform that enables secure, tamper-proof, and decentralized storage of medical records. It empowers **patients** with ownership and control over their health data, while providing **doctors** and **diagnostic centers** seamless yet permissioned access. The system ensures **trust, traceability, and transparency** — eliminating the risks of centralized failures, data leaks, and fake reports.
+**MediSetu** is a blockchain-powered platform that enables secure, tamper-proof, and decentralized storage of medical records. It empowers **patients** with ownership and control over their health data, while providing **doctors** and **diagnostic centers** seamless yet permissioned access. The system ensures **trust, traceability, and transparency** — eliminating the risks of centralized failures, data leaks, and fake reports.
 
 <br>
 
@@ -196,8 +196,8 @@ Aarogya Setu+ is a next-generation, AI-integrated, decentralized healthcare plat
 ## 📂 Clone the Repository
 
 ```
-git clone https://github.com/Ramanand-tomar/ArogyaBridge-Project
-cd  ArogyaBridge-Project
+git clone https://github.com/Ramanand-tomar/MediSetu-Project
+cd  MediSetu-Project
 ```
 
 1.Install nodeJs
