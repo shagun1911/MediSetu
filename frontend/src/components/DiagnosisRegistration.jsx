@@ -114,160 +114,152 @@ const DiagnosisRegistration = () => {
     setConfirmPasswordError("");
   };
 
-  const cancelOperation = () => {
-    navigate("/");
-  };
-
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-950 via-gray-900 to-teal-900 p-4 font-mono">
+    <div className="bg-gray-900 min-h-screen flex items-center justify-center p-4">
       <Toaster position="top-right" reverseOrder={false} />
-      <div className="w-full max-w-2xl bg-white/10 rounded-3xl shadow-2xl p-8 animate-fade-in-up border border-teal-400/30">
-        <h2 className="text-4xl text-teal-400 mb-8 font-extrabold text-center drop-shadow animate-bounce">
-          Diagnostic Registration
+      <div className="w-full max-w-2xl">
+        <h2 className="text-4xl text-teal-400 mb-8 font-extrabold text-center tracking-tight">
+          Create Your Diagnostic Center Account
         </h2>
-        <form className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          <div>
-            <label className="block font-bold text-teal-200 mb-1" htmlFor="diagnosticName">
-              Diagnostic Center Name
-            </label>
-            <input
-              id="diagnosticName"
-              name="diagnosticName"
-              type="text"
-              required
-              className="mt-1 p-2 w-full text-white bg-gray-800 border border-teal-500 rounded-lg focus:ring-2 focus:ring-teal-400 transition duration-200"
-              placeholder="Enter Diagnostic's Center Full Name"
-              value={diagnosticName}
-              onChange={(e) => setDiagnosticName(e.target.value)}
-            />
+        <form className="bg-gray-800 p-8 rounded-2xl shadow-2xl space-y-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label className="block font-bold text-gray-300" htmlFor="diagnosticName">
+                Diagnostic Center Name
+              </label>
+              <input
+                id="diagnosticName"
+                name="diagnosticName"
+                type="text"
+                required
+                className="mt-1 p-3 w-full text-white bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-teal-500 transition"
+                placeholder="Enter Diagnostic's Center Full Name"
+                value={diagnosticName}
+                onChange={(e) => setDiagnosticName(e.target.value)}
+              />
+            </div>
+            <div>
+              <label className="block font-bold text-gray-300" htmlFor="hospitalName">
+                Hospital Name
+              </label>
+              <input
+                id="hospitalName"
+                name="hospitalName"
+                type="text"
+                required
+                className="mt-1 p-3 w-full text-white bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-teal-500 transition"
+                placeholder="Enter Hospital Name"
+                value={hospitalName}
+                onChange={(e) => setHospitalName(e.target.value)}
+              />
+            </div>
+            <div>
+              <label className="block font-bold text-gray-300" htmlFor="diagnosticLocation">
+                Location
+              </label>
+              <input
+                type="text"
+                id="diagnosticLocation"
+                name="diagnosticLocation"
+                placeholder="Enter the location of Diagnostic center"
+                value={diagnosticLocation}
+                onChange={(e) => setDiagnosticLocation(e.target.value)}
+                className="mt-1 p-3 w-full text-white bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-teal-500 transition"
+              />
+            </div>
+            <div>
+              <label className="block font-bold text-gray-300" htmlFor="email">
+                Email Address
+              </label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                required
+                className={`mt-1 p-3 w-full text-white bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-teal-500 transition ${
+                  emailError && "border-red-500"
+                }`}
+                placeholder="Enter your Email-id"
+                value={email}
+                onChange={handleEmailChange}
+              />
+              {emailError && (
+                <p className="text-red-500 text-sm mt-1">{emailError}</p>
+              )}
+            </div>
+            <div>
+              <label className="block font-bold text-gray-300" htmlFor="hhNumber">
+                HH Number
+              </label>
+              <input
+                id="hhNumber"
+                name="hhNumber"
+                type="text"
+                required
+                className={`mt-1 p-3 w-full text-white bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-teal-500 transition ${
+                  hhNumberError && "border-red-500"
+                }`}
+                placeholder="HH Number"
+                value={hhNumber}
+                onChange={handlehhNumberChange}
+              />
+              {hhNumberError && (
+                <p className="text-red-500 text-sm mt-1">{hhNumberError}</p>
+              )}
+            </div>
+            <div>
+              <label className="block font-bold text-gray-300" htmlFor="password">
+                Password
+              </label>
+              <input
+                id="password"
+                name="password"
+                type="password"
+                required
+                className={`mt-1 p-3 w-full text-white bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-teal-500 transition ${
+                  passwordError && "border-red-500"
+                }`}
+                placeholder="Enter your Password"
+                value={password}
+                onChange={handlePasswordChange}
+              />
+              {passwordError && (
+                <p className="text-red-500 text-sm mt-1">{passwordError}</p>
+              )}
+            </div>
+            <div>
+              <label className="block font-bold text-gray-300" htmlFor="confirmPassword">
+                Confirm Password
+              </label>
+              <input
+                id="confirmPassword"
+                name="confirmPassword"
+                type="password"
+                required
+                className={`mt-1 p-3 w-full text-white bg-gray-700 border border-gray-600 rounded-lg focus:ring-2 focus:ring-teal-500 transition ${
+                  confirmPasswordError && "border-red-500"
+                }`}
+                placeholder="Confirm your Password"
+                value={confirmPassword}
+                onChange={handleConfirmPasswordChange}
+              />
+              {confirmPasswordError && (
+                <p className="text-red-500 text-sm mt-1">
+                  {confirmPasswordError}
+                </p>
+              )}
+            </div>
           </div>
-          <div>
-            <label className="block font-bold text-teal-200 mb-1" htmlFor="hospitalName">
-              Hospital Name
-            </label>
-            <input
-              id="hospitalName"
-              name="hospitalName"
-              type="text"
-              required
-              className="mt-1 p-2 w-full text-white bg-gray-800 border border-teal-500 rounded-lg focus:ring-2 focus:ring-teal-400 transition duration-200"
-              placeholder="Enter Hospital Name"
-              value={hospitalName}
-              onChange={(e) => setHospitalName(e.target.value)}
-            />
-          </div>
-          <div>
-            <label className="block font-bold text-teal-200 mb-1" htmlFor="diagnosticLocation">
-              Location
-            </label>
-            <input
-              type="text"
-              id="diagnosticLocation"
-              name="diagnosticLocation"
-              placeholder="Enter the location of Diagnostic center"
-              value={diagnosticLocation}
-              onChange={(e) => setDiagnosticLocation(e.target.value)}
-              className="mt-1 p-2 w-full text-white bg-gray-800 border border-teal-500 rounded-lg focus:ring-2 focus:ring-teal-400 transition duration-200"
-            />
-          </div>
-          <div>
-            <label className="block font-bold text-teal-200 mb-1" htmlFor="email">
-              Email Address
-            </label>
-            <input
-              id="email"
-              name="email"
-              type="email"
-              required
-              className={`mt-1 p-2 w-full text-white bg-gray-800 border border-teal-500 rounded-lg focus:ring-2 focus:ring-teal-400 transition duration-200 ${
-                emailError && "border-red-500"
-              }`}
-              placeholder="Enter your Email-id"
-              value={email}
-              onChange={handleEmailChange}
-            />
-            {emailError && (
-              <p className="text-red-500 text-sm mt-1">{emailError}</p>
-            )}
-          </div>
-          <div>
-            <label className="block font-bold text-teal-200 mb-1" htmlFor="hhNumber">
-              HH Number
-            </label>
-            <input
-              id="hhNumber"
-              name="hhNumber"
-              type="text"
-              required
-              className={`mt-1 p-2 w-full text-white bg-gray-800 border border-teal-500 rounded-lg focus:ring-2 focus:ring-teal-400 transition duration-200 ${
-                hhNumberError && "border-red-500"
-              }`}
-              placeholder="HH Number"
-              value={hhNumber}
-              onChange={handlehhNumberChange}
-            />
-            {hhNumberError && (
-              <p className="text-red-500 text-sm mt-1">{hhNumberError}</p>
-            )}
-          </div>
-          <div>
-            <label className="block font-bold text-teal-200 mb-1" htmlFor="password">
-              Password
-            </label>
-            <input
-              id="password"
-              name="password"
-              type="password"
-              required
-              className={`mt-1 p-2 w-full text-white bg-gray-800 border border-teal-500 rounded-lg focus:ring-2 focus:ring-teal-400 transition duration-200 ${
-                passwordError && "border-red-500"
-              }`}
-              placeholder="Enter your Password"
-              value={password}
-              onChange={handlePasswordChange}
-            />
-            {passwordError && (
-              <p className="text-red-500 text-sm mt-1">{passwordError}</p>
-            )}
-          </div>
-          <div>
-            <label className="block font-bold text-teal-200 mb-1" htmlFor="confirmPassword">
-              Confirm Password
-            </label>
-            <input
-              id="confirmPassword"
-              name="confirmPassword"
-              type="password"
-              required
-              className={`mt-1 p-2 w-full text-white bg-gray-800 border border-teal-500 rounded-lg focus:ring-2 focus:ring-teal-400 transition duration-200 ${
-                confirmPasswordError && "border-red-500"
-              }`}
-              placeholder="Confirm your Password"
-              value={confirmPassword}
-              onChange={handleConfirmPasswordChange}
-            />
-            {confirmPasswordError && (
-              <p className="text-red-500 text-sm mt-1">
-                {confirmPasswordError}
-              </p>
-            )}
+          <div className="flex justify-center pt-4">
+            <button
+              type="button"
+              onClick={handleRegister}
+              className="w-full md:w-1/2 px-8 py-3 bg-teal-500 text-white font-bold text-lg rounded-lg shadow-lg cursor-pointer transition-all duration-300 ease-in-out hover:bg-teal-600 disabled:bg-gray-500 disabled:cursor-not-allowed"
+            >
+              Register
+            </button>
           </div>
         </form>
-        <div className="flex flex-col sm:flex-row gap-4 text-center mt-8 justify-center">
-          <button
-            type="button"
-            onClick={handleRegister}
-            className="py-3 px-8 bg-gradient-to-r from-teal-500 to-blue-500 text-white rounded-full font-bold shadow-lg hover:scale-105 hover:from-teal-600 hover:to-blue-600 transition-all duration-300 animate-pulse"
-          >
-            Register
-          </button>
-          <button
-            onClick={cancelOperation}
-            className="py-3 px-8 bg-gradient-to-r from-pink-500 to-yellow-400 text-white rounded-full font-bold shadow-lg hover:scale-105 hover:from-pink-600 hover:to-yellow-500 transition-all duration-300 animate-pulse"
-          >
-            Close
-          </button>
-        </div>
       </div>
     </div>
   );

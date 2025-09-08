@@ -1,7 +1,7 @@
 import { PDFDocument, rgb, StandardFonts } from 'pdf-lib';
 import { saveAs } from 'file-saver';
 
-const LOGO_URL = './ArogyaBridge.jpg'; // Add your logo in public folder
+const LOGO_URL = './MediSetu.jpg'; // Add your logo in public folder
 
 export const generatePrescriptionPdf = async ({ doctorProfile, patientNumber, title, description, date }) => {
   const pdfDoc = await PDFDocument.create();
@@ -36,7 +36,7 @@ export const generatePrescriptionPdf = async ({ doctorProfile, patientNumber, ti
   }
 
   // Header Title
-  page.drawText("ArogyaBridge e-Prescription", {
+  page.drawText("MediSetu e-Prescription", {
     x: 40,
     y: height - 50,
     size: 20,
@@ -133,7 +133,7 @@ export const generatePrescriptionPdf = async ({ doctorProfile, patientNumber, ti
     color: rgb(0.6, 0.8, 0.8),
   });
 
-  page.drawText("This prescription is digitally generated via ArogyaBridge.", {
+  page.drawText("This prescription is digitally generated via MediSetu.", {
     x: 50,
     y: 30,
     size: 10,

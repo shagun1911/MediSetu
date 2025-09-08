@@ -8,7 +8,7 @@ const Chatbot = () => {
   const [messages, setMessages] = useState([
     {
       from: "bot",
-      text: "👋 Welcome to ArogyaBridge! I'm your healthcare buddy 🤝. Ask me about your medical records, prescriptions, or some healthy life tips! 🌱",
+      text: "👋 Welcome to MediSetu! I'm your healthcare buddy 🤝. Ask me about your medical records, prescriptions, or some healthy life tips! 🌱",
     },
   ]);
   const [input, setInput] = useState("");
@@ -63,7 +63,7 @@ const Chatbot = () => {
         <div className="fixed bottom-24 right-8 z-50 w-80 max-w-xs bg-white rounded-2xl shadow-xl border border-teal-300 flex flex-col">
           {/* Chat Header */}
           <div className="bg-gradient-to-r from-teal-500 to-blue-600 text-white rounded-t-2xl px-4 py-3 flex justify-between items-center">
-            <span className="font-bold">ArogyaBridge Chatbot</span>
+            <span className="font-bold">MediSetu Chatbot</span>
             <button onClick={() => setOpen(false)} className="text-xl font-bold hover:text-red-200">&times;</button>
           </div>
 

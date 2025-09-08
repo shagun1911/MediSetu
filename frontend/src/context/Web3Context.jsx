@@ -1,9 +1,7 @@
 import React, { createContext, useEffect, useState } from 'react';
 import Web3 from 'web3';
 
-import Patient_ABI from '../../ABI/patient_ABI.json';
-import Doctor_ABI from '../../ABI/doctor_ABI.json';
-import Diagnosis_ABI from '../../ABI/diagnosis_ABI.json';
+import contractData from '../contracts/contract-data.json';
 
 export const Web3Context = createContext();
 
@@ -13,10 +11,15 @@ export const Web3Provider = ({ children }) => {
   const [contract, setContract] = useState(null);
   const [network, setNetwork] = useState('');
 
-  const PatientContractAddress = import.meta.env.VITE_PATIENT_CONTRACT_ADDRESS || "0xEb7a8580734F6476998c5c86E3B43a6b045B3E91" ;
-  const DoctorContractAddress = import.meta.env.VITE_DOCTOR_CONTRACT_ADDRESS || "0xF00aAd1026e47fe1B94735549116FE9b8Df6bd8F";
-  const DiagnosisContractAddress = import.meta.env.VITE_DIAGNOSIS_CONTRACT_ADDRESS || "0x40c63AA7b57bCb74FD4429E3D71025d3054A598E";
-  const Ganache_Address = import.meta.env.VITE_GANACHE_URL;
+  const PatientContractAddress = contractData.patientRegistration.address;
+  const DoctorContractAddress = contractData.doctorRegistration.address;
+  const DiagnosisContractAddress = contractData.diagnosisRegistration.address;
+
+  const Patient_ABI = contractData.patientRegistration.abi;
+  const Doctor_ABI = contractData.doctorRegistration.abi;
+  const Diagnosis_ABI = contractData.diagnosisRegistration.abi;
+
+  const Ganache_Address = import.meta.env.VITE_GANACHE_URL || 'http://127.0.0.1:7545';
 
   useEffect(() => {
     const loadWeb3 = async () => {
