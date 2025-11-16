@@ -1,64 +1,110 @@
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import logo from "./logo_new.jpg";
 
-const NavBar = () => {
+const NavBar = ({ isShrunk = false, setIsShrunk = () => {} }) => {
   const navigate = useNavigate();
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const handleNavigation = (path) => {
+    setIsShrunk(true);
+    navigate(path);
+    setMenuOpen(false);
+  };
 
   return (
-    <nav className="bg-black text-white h-[100px]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col sm:flex-row items-center justify-between py-4 sm:py-0">
-          {/* Logo */}
-          <div className="shrink-0">
-            <img
-              className="h-16 w-auto my-[17px]"
-              src={logo}
-              alt="Logo"
-              onClick={() => navigate("/")}
-            />
-          </div>
+    <header
+      className={`relative w-full text-white bg-gradient-to-br from-[#001F3F] via-[#003366] to-[#008080] shadow-lg transition-all duration-700 ease-in-out ${
+        isShrunk ? "py-3 sm:py-4" : "py-6 sm:py-8"
+      }`}
+    >
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(255,255,255,0.15)_0%,_transparent_60%)]"></div>
 
-          {/* Title */}
-          <div className="mt-4 sm:mt-0 sm:ml-10 text-center">
-            <span
-              className="text-2xl sm:text-3xl lg:text-4xl font-semibold cursor-pointer"
-              onClick={() => navigate("/")}
-            >
-              MediSetu
-            </span>
-          </div>
+      <div className="relative z-10 max-w-7xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between">
+        {/* Brand Title */}
+        <h1
+          onClick={() => handleNavigation("/")}
+          className={`cursor-pointer font-extrabold tracking-wide bg-clip-text text-transparent bg-gradient-to-r from-cyan-300 to-teal-400 transition-all duration-700 ${
+            isShrunk
+              ? "text-3xl sm:text-4xl"
+              : "text-4xl sm:text-5xl hover:scale-105"
+          }`}
+        >
+          MediSetu
+        </h1>
 
-          {/* Navigation buttons */}
-          <div className="flex flex-col sm:flex-row sm:space-x-4 mt-4 sm:mt-0">
+        {/* Desktop Navigation */}
+        <nav
+          className={`hidden sm:flex items-center space-x-8 font-medium transition-all duration-500 ${
+            isShrunk ? "text-base" : "text-lg"
+          }`}
+        >
+          {[
+            { name: "Home", path: "/" },
+            { name: "Register", path: "/register" },
+            { name: "Login", path: "/login" },
+          ].map((btn) => (
             <button
-              className="text-lg px-3 py-1.5 rounded-md font-medium transition-transform duration-300 ease-in-out transform hover:scale-110"
-              onClick={() => navigate("/")}
+              key={btn.name}
+              onClick={() => handleNavigation(btn.path)}
+              className="relative px-4 py-1 transition-all duration-300 rounded-md hover:text-cyan-300 hover:scale-110 hover:shadow-[0_0_10px_rgba(34,211,238,0.6)] focus:outline-none"
             >
-              Home
+              {btn.name}
             </button>
-            <button
-              className="text-lg px-3 py-1.5 rounded-md font-medium transition-transform duration-300 ease-in-out transform hover:scale-110"
-              onClick={() => navigate("/AboutPage")}
+          ))}
+        </nav>
+
+        {/* Mobile Menu Button */}
+        <div className="sm:hidden flex items-center">
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="focus:outline-none"
+          >
+            <svg
+              className="w-8 h-8"
+              fill="none"
+              stroke="white"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              About Us
-            </button>
-            <button
-              className="text-lg px-3 py-1.5 rounded-md font-medium transition-transform duration-300 ease-in-out transform hover:scale-110"
-              onClick={() => navigate("/register")}
-            >
-              Register
-            </button>
-            <button
-              className="text-lg px-3 py-1.5 rounded-md font-medium transition-transform duration-300 ease-in-out transform hover:scale-110"
-              onClick={() => navigate("/login")}
-            >
-              Login
-            </button>
-          </div>
+              {menuOpen ? (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              ) : (
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              )}
+            </svg>
+          </button>
         </div>
       </div>
-    </nav>
+
+      {/* Mobile Dropdown */}
+      {menuOpen && (
+        <div className="sm:hidden flex flex-col items-center space-y-4 py-4 bg-[#002b5b] rounded-b-xl shadow-inner">
+          {[
+            { name: "Home", path: "/" },
+            { name: "Register", path: "/register" },
+            { name: "Login", path: "/login" },
+          ].map((btn) => (
+            <button
+              key={btn.name}
+              onClick={() => handleNavigation(btn.path)}
+              className="text-lg font-semibold hover:text-cyan-300 transition-all duration-300 hover:scale-110"
+            >
+              {btn.name}
+            </button>
+          ))}
+        </div>
+      )}
+    </header>
   );
 };
 

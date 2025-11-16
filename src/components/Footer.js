@@ -8,110 +8,62 @@ import {
 
 const Footer = () => {
   return (
-    <div className="bg-gray-800 text-white p-6 ">
-      <div className="container mx-auto">
-        <div className="flex justify-between items-start mb-6 mt-60">
-          {/* Contact Information */}
-          <div className="w-1/3">
-            <h3 className="font-bold text-xl mb-2">Contact Information</h3>
-            <p>
-              <span className="font-bold">Address:</span> IIIT UNA Himachal Pradesh, India
-            174303 
-            </p>
-            <p>
-              <span className="font-bold">Phone:</span> 9896941400
-            </p>
-            <p>
-              <span className="font-bold">Email:</span> 19shagunyadavnnl@gmail.com
-            </p>
-          </div>
+    <footer className="bg-gradient-to-br from-[#001F3F] via-[#003366] to-[#006666] text-white py-10 px-6 shadow-inner border-t border-white/10">
+      <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-8 sm:space-y-0">
+        
+        {/* Contact Information */}
+        <div className="w-full sm:w-1/2">
+          <h3 className="font-bold text-2xl text-cyan-300 mb-3">Contact Us</h3>
+          <p className="text-gray-300 mb-1">
+            <span className="font-semibold text-white">Address:</span> IIIT UNA, Himachal Pradesh, India 177209
+          </p>
+          <p className="text-gray-300 mb-1">
+            <span className="font-semibold text-white">Phone:</span> +91 9896941400
+          </p>
+          <p className="text-gray-300">
+            <span className="font-semibold text-white">Email:</span> 19shagunyadavnnl@gmail.com
+          </p>
+        </div>
 
-          {/* Useful Links */}
-          <div className="w-1/3">
-            <h3 className="font-bold text-xl mb-2">Useful Links</h3>
-            <ul className="space-y-2">
-              <li>
-                <a href="#" className="hover:underline">
-                  About Us
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:underline">
-                  Services
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:underline">
-                  FAQs
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:underline">
-                  Privacy Policy
-                </a>
-              </li>
-            </ul>
-          </div>
-          <div className="w-1/3">
-            <h3 className="font-bold text-xl mb-2">Other Links</h3>
-            <ul className="space-y-2">
-              <li>
-                <a href="#" className="hover:underline">
-                  Security Partners
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:underline">
-                  Medical Donors
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:underline">
-                  Sponsors
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:underline">
-                  Careers
-                </a>
-              </li>
-              <li>
-                <a href="#" className="hover:underline">
-                  Board Members Information
-                </a>
-              </li>
-            </ul>
-          </div>
+        {/* Social Links */}
+        <div className="flex space-x-6 sm:justify-end justify-center w-full sm:w-1/2">
+          <a
+            href="https://www.instagram.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-3 bg-white/10 rounded-full hover:bg-cyan-400 hover:text-black transition-all duration-300 hover:scale-110 shadow-md"
+          >
+            <FontAwesomeIcon icon={faInstagram} size="lg" />
+          </a>
 
-          {/* Social Media Icons */}
-          <div className="w-1/3 flex justify-end items-center">
-            <a
-              href="https://instagram.com/company"
-              className="mr-4"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FontAwesomeIcon icon={faInstagram} size="2x" />
-            </a>
-            <a
-              href="https://facebook.com/company"
-              className="mr-4"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FontAwesomeIcon icon={faFacebookF} size="2x" />
-            </a>
-            <a
-              href="https://linkedin.com/company"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FontAwesomeIcon icon={faLinkedinIn} size="2x" />
-            </a>
-          </div>
+          <a
+            href="https://www.facebook.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-3 bg-white/10 rounded-full hover:bg-cyan-400 hover:text-black transition-all duration-300 hover:scale-110 shadow-md"
+          >
+            <FontAwesomeIcon icon={faFacebookF} size="lg" />
+          </a>
+
+          <a
+            href="https://www.linkedin.com/in/shagun-yadav-a72513319/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-3 bg-white/10 rounded-full hover:bg-cyan-400 hover:text-black transition-all duration-300 hover:scale-110 shadow-md"
+          >
+            <FontAwesomeIcon icon={faLinkedinIn} size="lg" />
+          </a>
         </div>
       </div>
-    </div>
+
+      {/* Divider Line */}
+      <div className="mt-10 border-t border-white/10"></div>
+
+      {/* Copyright Section */}
+      <div className="text-center text-gray-400 text-sm mt-4">
+        © {new Date().getFullYear()} <span className="text-cyan-300">MediSetu</span>. All rights reserved.
+      </div>
+    </footer>
   );
 };
 

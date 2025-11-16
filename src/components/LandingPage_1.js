@@ -1,69 +1,89 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import NavBar from "./NavBar";
-
-// Assuming you have images in a folder named `images` inside the `src` directory.
 import lp_11 from "./lp_11.png";
 import lp_10 from "./lp_10.png";
 import lp_12 from "./lp_12.png";
 
-
-
 function LandingPage() {
   const [isHovered, setIsHovered] = useState(false);
-  function onEnter() {
-    setIsHovered(true);
-  }
-  function onLeave() {
-    setIsHovered(false);
-  }
+  const [isShrunk, setIsShrunk] = useState(false);
+  const navigate = useNavigate();
 
   return (
-    <div>
-        <NavBar></NavBar>
-      <div className="bg-gray-900 text-white font-sans min-h-screen flex items-center justify-center">
+    <div className="bg-gradient-to-br from-[#001f3f] via-[#003366] to-[#006666] text-white font-sans min-h-screen">
+      <NavBar isShrunk={isShrunk} setIsShrunk={setIsShrunk} />
+
+      <section className="flex flex-col sm:flex-row items-center justify-center max-w-7xl mx-auto px-6 sm:px-10 py-20 sm:py-28 transition-all duration-700">
+        {/* Image Section */}
         <div
-          className="w-[1400px] h-[450px] mt-[-180px] flex"
-          onMouseEnter={() => setTimeout(onEnter, 500)}
-          onMouseHover={() => setTimeout(onLeave, 700)}
-          onMouseLeave={() => setTimeout(onLeave, 600)}
-
+          className="relative w-full sm:w-[60%] h-[400px] rounded-xl overflow-hidden shadow-2xl transition-transform duration-700 hover:scale-105"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
         >
-          {/* Image */}
-          <div className="flex-grow relative overflow-hidden transition-transform duration-10000 ease-in-out transform hover:scale-105">
           <img
-              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-10000 ease-in-out ${
-                !isHovered ? "opacity-100" : "opacity-0"
-              }`}
-              src={lp_10}
-              alt="Landing page illustration"
-            />
-            <img
-              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-10000 ease-in-out ${
-                isHovered ? "opacity-100" : "opacity-0"
-              }`}
-              src={lp_12}
-              alt="Landing page illustration"
-            />
-             <img
-              className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-10000 ease-in-out ${
-                !isHovered ? "opacity-100" : "opacity-0"
-              }`}
-              src={lp_11}
-              alt="Landing page illustration"
-            />
-            
-          </div>
+            src={lp_10}
+            alt="EHR Illustration"
+            className={`absolute inset-0 w-full h-full object-cover rounded-xl transition-opacity duration-700 ${
+              !isHovered ? "opacity-100" : "opacity-0"
+            }`}
+          />
+          <img
+            src={lp_11}
+            alt="Blockchain Healthcare"
+            className={`absolute inset-0 w-full h-full object-cover rounded-xl transition-opacity duration-700 ${
+              isHovered ? "opacity-100" : "opacity-0"
+            }`}
+          />
+          <img
+            src={lp_12}
+            alt="Patient Data Visualization"
+            className={`absolute inset-0 w-full h-full object-cover rounded-xl transition-opacity duration-700 ${
+              isHovered ? "opacity-60" : "opacity-0"
+            }`}
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+        </div>
 
-          {/* Content */}
-          <div className="flex flex-col text-custom-blue space-y-8 w-2/5 p-8 bg-gray-800 shadow-lg ml-4 rounded-lg transition-transform duration-10000 ease-in-out transform hover:scale-105">
-            <div className="space-y-4">
-              <p className="text-lg font-mono">
-              The MediSetu App is revolutionizing EHR management by leveraging blockchain technology. Utilizing key components such as blockchain for secure and transparent data storage, Ganache for rapid development, Metamask for seamless blockchain interaction, and IPFS desktop for decentralized file storage, It ensures enhanced security, improved accessibility, data interoperability, and trust. By adopting this innovative approach, It aims to transform healthcare data management, leading to better patient outcomes and improved healthcare delivery.
-                </p>
-            </div>
+        {/* Content Section */}
+        <div className="mt-10 sm:mt-0 sm:ml-10 w-full sm:w-[40%] bg-white/10 backdrop-blur-md rounded-xl p-8 shadow-lg border border-white/10 transition-transform duration-700 hover:scale-105">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-cyan-300">
+            Revolutionizing Healthcare Data with Blockchain
+          </h2>
+          <p className="text-base sm:text-lg leading-relaxed text-gray-200 mb-8">
+            <span className="font-semibold text-white">MediSetu</span> uses{" "}
+            <span className="text-cyan-300">Ethereum</span> and{" "}
+            <span className="text-teal-300">IPFS</span> for secure, transparent,
+            and decentralized Electronic Health Records. With{" "}
+            <span className="text-cyan-200">Metamask</span> and{" "}
+            <span className="text-cyan-200">Truffle</span>, MediSetu empowers
+            users with full control over their medical data.
+          </p>
+
+          {/* CTA Buttons */}
+          <div className="flex flex-wrap gap-6">
+            <button
+              onClick={() => {
+                setIsShrunk(true);
+                navigate("/register");
+              }}
+              className="px-6 py-3 bg-cyan-400 text-black font-semibold rounded-xl shadow-md hover:bg-cyan-300 hover:scale-105 hover:shadow-[0_0_15px_rgba(34,211,238,0.6)] transition-all duration-300"
+            >
+              Get Started
+            </button>
+
+            <button
+              onClick={() => {
+                setIsShrunk(true);
+                navigate("/aboutPage");
+              }}
+              className="px-6 py-3 border border-white text-white rounded-xl hover:bg-white hover:text-[#003366] hover:shadow-[0_0_15px_rgba(255,255,255,0.5)] transition-all duration-300"
+            >
+              Learn More
+            </button>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 }
